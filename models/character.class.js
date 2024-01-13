@@ -5,7 +5,7 @@ class Character extends MovableObject {
   width = 85;
   x = 80;
   y = 150;
-  speed = 1;
+  speed = 5;
   world; // Der Karakter kann nun auf die Variablen aus der Welt zugreifen.
   walking_sound = new Audio("audio/walkingCharacter.mp3");
   IMAGES_WALKING = [
@@ -51,18 +51,23 @@ class Character extends MovableObject {
      */
     setInterval(() => {
       this.walking_sound.pause();
+
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.x += this.speed;
-        this.otherDirection = false;
+        this.moveRight();
         this.walking_sound.play();
       }
+
       if (this.world.keyboard.LEFT && this.x > -500) {
-        this.x -= this.speed;
-        this.otherDirection = true;
+        this.moveLeft();
         this.walking_sound.play();
       }
+
+      if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+        this.jump();
+      }
+
       this.world.camera_x = -this.x + 100;
-    });
+    }, 1000 / 60);
 
     setInterval(() => {
       if (this.isAboveGround()) {
@@ -76,5 +81,7 @@ class Character extends MovableObject {
     }, 1000 / 7);
   }
 
-  // jump() {}
+  jump() {
+    this.speedY = 15;
+  }
 }

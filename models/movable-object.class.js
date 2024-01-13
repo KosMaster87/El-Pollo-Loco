@@ -5,15 +5,15 @@ class MovableObject {
   currentImage = 0;
   otherDirection = false;
   speedY = 0;
-  acceleration = 0.7;
+  acceleration = 1;
 
   applyGravity() {
     setInterval(() => {
-      if (this.isAboveGround()) {
-        this.y -= +this.speedY;
+      if (this.isAboveGround() || this.speedY > 0) {
+        this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
-    }, 1000 / 60);
+    }, 1000 / 26);
   }
 
   isAboveGround() {
@@ -54,11 +54,13 @@ class MovableObject {
   /**
    * Bewegt die Wolken und die Hühner
    */
-  moveLeft() {
-    setInterval(() => {
-      this.x -= this.speed;
-    }, 1000 / 60);
+  moveRight() {
+    this.x += this.speed;
+    this.otherDirection = false;
   }
 
-  moveRight() {}
+  moveLeft() {
+    this.x -= this.speed;
+    this.otherDirection = true;
+  }
 }
