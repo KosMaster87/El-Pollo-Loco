@@ -1,15 +1,24 @@
 "use strict";
 
 class MovableObject {
-  x = 80;
-  y = 270;
-  img;
-  height = 150;
-  width = 85;
   imageCache = {};
   currentImage = 0;
-  speed = 0.15;
   otherDirection = false;
+  speedY = 0;
+  acceleration = 0.7;
+
+  applyGravity() {
+    setInterval(() => {
+      if (this.isAboveGround()) {
+        this.y -= +this.speedY;
+        this.speedY -= this.acceleration;
+      }
+    }, 1000 / 60);
+  }
+
+  isAboveGround() {
+    return this.y < 260;
+  }
 
   /**
    * @param {Load image for any movable caracter.} path
@@ -27,7 +36,9 @@ class MovableObject {
     array.forEach((path) => {
       let img = new Image();
       img.src = path; // Path erstellen (nicht der dazugehörige Key.)
-      this.imageCache[path] = img; // [path] ist der Individuelle Key für jedes des Bilder. Da ich in der Iterierung mich bereits befinde, gebe ich den selbigen Path als Key ein.
+      this.imageCache[path] = img;
+      // [path] ist der Individuelle Key für jedes des Bilder.
+      // Da ich in der Iterierung mich bereits befinde, gebe ich den selbigen Path als Key ein.
     });
   }
 
