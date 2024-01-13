@@ -1,7 +1,7 @@
 "use strict";
 
 class World {
-  level = level01;
+  level = level1;
   character = new Character();
 
   canvas;

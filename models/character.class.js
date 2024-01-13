@@ -40,7 +40,7 @@ class Character extends MovableObject {
      * Laufrichtung
      */
     setInterval(() => {
-      // this.walking_sound.pause();
+      this.walking_sound.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.x += this.speed;
         this.otherDirection = false;
