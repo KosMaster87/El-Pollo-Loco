@@ -1,7 +1,9 @@
 "use strict";
 
 class Character extends MovableObject {
-  speed = 10;
+  speed = 1;
+  world; // Der Karakter kann nun auf die Variablen aus der Welt zugreifen.
+  walking_sound = new Audio("audio/walkingCharacter.mp3");
   IMAGES_WALKING = [
     "img/2_character_pepe/2_walk/W-21.png",
     "img/2_character_pepe/2_walk/W-22.png",
@@ -10,9 +12,6 @@ class Character extends MovableObject {
     "img/2_character_pepe/2_walk/W-25.png",
     "img/2_character_pepe/2_walk/W-26.png",
   ];
-  // currentImage = 0;
-  world; // Der Karakter kann nun auf die Variablen aus der Welt zugreifen.
-  walking_sound = new Audio("audio/walkingCharacter.mp3");
 
   constructor() {
     /**
@@ -21,23 +20,17 @@ class Character extends MovableObject {
     super().loadImage("img/2_character_pepe/2_walk/W-21.png");
 
     /**
-     * this. ist der Initiator für diesen Karakter. DIe loadImages() wird dann in der Eltern Klasse "movable-object.class.js weiter ausgeführt."
+     * this. ist der Initiator für diesen Karakter. Die loadImages() wird dann in der Eltern Klasse "movable-object.class.js weiter ausgeführt."
      */
     this.loadImages(this.IMAGES_WALKING);
 
     this.animate();
   }
 
-  /**
-   * Der Konstruktor startet die this.animate() Funktion.
-   * @param { Die "currentImage" Variable wir der ich nun arbeitem will!}
-   */
-  animate() {}
-
   animate() {
     /**
      * Speed optionts
-     * Laufrichtung
+     * Running direction
      */
     setInterval(() => {
       this.walking_sound.pause();

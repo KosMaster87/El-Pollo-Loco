@@ -3,7 +3,6 @@
 class World {
   level = level1;
   character = new Character();
-
   canvas;
   ctx;
   keyboard;
@@ -23,13 +22,14 @@ class World {
 
   /**
    * Den Karakter und die Welt zusammen verbinden für die Tastatur steuerung.
-   * Der Karakter kann die Wariablen der Welt nun nutzen.
+   * Der Karakter kann die Variablen der Welt nun nutzen.
    */
   setWorld() {
     this.character.world = this;
   }
+
   /**
-   * Draw() wird immer wieder aufgerufen
+   * Draw() wird immer wieder aufgerufen.
    * Draw what ever in this.World
    */
   draw() {
@@ -67,7 +67,7 @@ class World {
 
   /**
    * Die if Abfragen handhaben den Charakter, seinen Spiegelbild. Sowie die Gespiegelte Koardinaten des Canvas für den Charakter.
-   * Add to Canvas Board each thins.
+   * Add to Canvas Board each things.
    * @param {movable object} mo
    */
   addToMap(mo) {
