@@ -72,24 +72,36 @@ class World {
    */
   addToMap(mo) {
     if (mo.otherDirection) {
-      this.ctx.save();
-      this.ctx.translate(mo.width, 0);
-      this.ctx.scale(-1, 1);
-      mo.x = mo.x * -1;
+      this.flipImage(mo);
     }
 
-    this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
-
-    // Red rectangle
-    this.ctx.beginPath();
-    this.ctx.lineWidth = "2";
-    this.ctx.strokeStyle = "red";
-    this.ctx.rect(mo.x, mo.y, mo.x + mo.width, mo.y + mo.height);
-    this.ctx.stroke();
+    /**
+     * TODO *******  export to movable-object.class.js
+     */
+    mo.draw(this.ctx);
+    mo.drawFrame(this.ctx);
 
     if (mo.otherDirection) {
-      mo.x = mo.x * -1;
-      this.ctx.restore();
+      this.flipImageBack(mo);
     }
+  }
+
+  /**
+   * TODO *******  export to movable-object.class.js
+   * @param {movable-object} mo
+   */
+  flipImage(mo) {
+    this.ctx.save();
+    this.ctx.translate(mo.width, 0);
+    this.ctx.scale(-1, 1);
+    mo.x = mo.x * -1;
+  }
+
+  /**
+   * @param {movable-object} mo
+   */
+  flipImageBack(mo) {
+    mo.x = mo.x * -1;
+    this.ctx.restore();
   }
 }
