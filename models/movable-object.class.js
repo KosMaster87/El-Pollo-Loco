@@ -20,24 +20,6 @@ class MovableObject extends DrawableObject {
     return this.y < 260;
   }
 
-  /**
-   * Import from world.class.js
-   * InstanceOf bedeutet, dass nur die in der if Bediengung markierten Objekte die Umrandung bekommen.
-   */
-  drawFrame(ctx) {
-    if (this instanceof Character || this instanceof Chicken) {
-      /**
-       * Import from world.class.js
-       * Red rectangle
-       */
-      ctx.beginPath();
-      ctx.lineWidth = "2";
-      ctx.strokeStyle = "red";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
-  }
-
   playAnimation(images) {
     let i = this.currentImage % images.length; // let i = 7 & 6; => 1, Rest 1
     let path = images[i];

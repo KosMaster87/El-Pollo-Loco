@@ -2,6 +2,7 @@
 
 class World {
   level = level1;
+  statusBar = new StatusBar();
   character = new Character();
   canvas;
   ctx;
@@ -54,9 +55,10 @@ class World {
     this.ctx.translate(this.camera_x, 0); // Die Welt verschieben.
 
     this.addObjectsToMap(this.level.background);
+    this.addToMap(this.statusBar);
+    this.addToMap(this.character);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies);
-    this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0); // Die Welt verschieben.
 

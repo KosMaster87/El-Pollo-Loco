@@ -22,6 +22,24 @@ class DrawableObject {
   }
 
   /**
+   * Import from world.class.js
+   * InstanceOf bedeutet, dass nur die in der if Bediengung markierten Objekte die Umrandung bekommen.
+   */
+  drawFrame(ctx) {
+    if (this instanceof Character || this instanceof Chicken) {
+      /**
+       * Import from world.class.js
+       * Red rectangle
+       */
+      ctx.beginPath();
+      ctx.lineWidth = "2";
+      ctx.strokeStyle = "red";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
+  }
+
+  /**
    * Wird in der "character.class.js durch super() gestartet."
    * @param {Array image summary} array
    */
