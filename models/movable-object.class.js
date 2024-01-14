@@ -94,13 +94,30 @@ class MovableObject {
 
   isColliding(obj) {
     return (
-      this.X + this.width >= obj.X &&
-      this.X <= obj.X + obj.width &&
-      this.Y + this.offsetY + this.height >= obj.Y &&
-      this.Y + this.offsetY <= obj.Y + obj.height &&
-      obj.onCollisionCourse
-      // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir.
-      // Nützlich bei Gegenständen, auf denen man stehen kann.
+      this.x + this.width > obj.x &&
+      this.y + this.height > obj.y &&
+      this.x < obj.x + obj.width &&
+      this.y < obj.y + obj.height
     );
   }
+
+  //  MODUL 11 - El Pollo Loco Teil: 10 - Collision detection VIDEO
+  //   // Bessere Formel zur Kollisionsberechnung (Genauer)
+  // isColliding (obj) {
+  //   return  (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) &&
+  //           (this.Y + this.offsetY + this.height) >= obj.Y &&
+  //           (this.Y + this.offsetY) <= (obj.Y + obj.height) &&
+  //           obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
+
+  // }
+
+  // Marian
+  // isColliding(obj) {
+  //   return (
+  //     this.x + this.width - this.offset.right >= obj.x + obj.offset.left &&
+  //     this.x + this.offset.left <= obj.x + obj.width - obj.offset.right &&
+  //     this.y + this.height - this.offset.bottom >= obj.y + obj.offset.top &&
+  //     this.y + this.offset.top <= obj.y + obj.height - obj.offset.bottom
+  //   );
+  // }
 }
