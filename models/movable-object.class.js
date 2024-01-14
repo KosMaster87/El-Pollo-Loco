@@ -71,10 +71,8 @@ class MovableObject {
   }
 
   playAnimation(images) {
-    let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 7 & 6; => 1, Rest 1
-    let path = this.IMAGES_WALKING[i];
-    // let path = this.images[i]; // So will Junus das haben.
-
+    let i = this.currentImage % images.length; // let i = 7 & 6; => 1, Rest 1
+    let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
   }
@@ -92,6 +90,17 @@ class MovableObject {
 
   jump() {
     this.speedY = 15;
+  }
+
+  hit() {
+    this.energy -= 10;
+    if (this.energy < 0) {
+      this.energy = 0;
+    }
+  }
+
+  isDead() {
+    return this.energy == 0;
   }
 
   isColliding(obj) {
