@@ -8,6 +8,7 @@ class MovableObject {
   speedY = 0;
   acceleration = 1;
   energy = 100;
+  lastHit = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -92,10 +93,18 @@ class MovableObject {
     this.speedY = 15;
   }
 
+  isHurt() {
+    let timePassed = new Date().getTime() - this.lastHit;
+    timePassed = timePassed / 1000;
+    return timePassed < 1;
+  }
+
   hit() {
     this.energy -= 10;
     if (this.energy < 0) {
       this.energy = 0;
+    } else {
+      this.lastHit = new Date().getTime();
     }
   }
 
