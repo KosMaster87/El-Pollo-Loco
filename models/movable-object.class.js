@@ -1,11 +1,13 @@
 "use strict";
 
 class MovableObject {
+  // img;
   imageCache = {};
   currentImage = 0;
   otherDirection = false;
   speedY = 0;
   acceleration = 1;
+  energy = 100;
 
   applyGravity() {
     setInterval(() => {

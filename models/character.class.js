@@ -8,6 +8,7 @@ class Character extends MovableObject {
   speed = 5;
   world; // Der Karakter kann nun auf die Variablen aus der Welt zugreifen.
   walking_sound = new Audio("audio/walkingCharacter.mp3");
+
   IMAGES_WALKING = [
     "img/2_character_pepe/2_walk/W-21.png",
     "img/2_character_pepe/2_walk/W-22.png",
