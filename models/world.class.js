@@ -4,6 +4,8 @@ class World {
   level = level1;
   statusBar = new StatusBar();
   character = new Character();
+  throwableObjects = [];
+  // throwableObjects = [new ThrowableObject()];
   canvas;
   ctx;
   keyboard;
@@ -19,7 +21,7 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
-    this.checkCollisions();
+    this.run();
   }
 
   /**
@@ -30,15 +32,39 @@ class World {
     this.character.world = this;
   }
 
-  checkCollisions() {
+  /**
+   *
+   */
+  run() {
     setInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-        }
-      });
+      this.checkCollisions();
+      this.checkTrowObject();
     }, 200);
+  }
+
+  /**
+   * Just check if character collision with chicken.
+   */
+  checkCollisions() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
+      }
+    });
+  }
+
+  /**
+   * Flasche Werfen
+   */
+  checkTrowObject() {
+    if (this.keyboard.D) {
+      let bottle = new ThrowableObject(
+        this.character.x + 100,
+        this.character.y + 100
+      );
+      this.throwableObjects.push(bottle);
+    }
   }
 
   /**
@@ -60,6 +86,7 @@ class World {
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.throwableObjects);
 
     this.ctx.translate(-this.camera_x, 0); // Die Welt verschieben.
 
