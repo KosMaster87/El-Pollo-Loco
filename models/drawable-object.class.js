@@ -40,7 +40,7 @@ class DrawableObject {
   }
 
   /**
-   * Wird in der "character.class.js durch super() gestartet."
+   * Wird bei den Charakteren und bewegten Objekten durch super() gestartet."
    * @param {Array image summary} array
    */
   loadImages(array) {

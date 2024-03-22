@@ -84,8 +84,9 @@ class MovableObject extends DrawableObject {
   //   return  (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) &&
   //           (this.Y + this.offsetY + this.height) >= obj.Y &&
   //           (this.Y + this.offsetY) <= (obj.Y + obj.height) &&
-  //           obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-
+  //           obj.onCollisionCourse;
+  // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt.
+  // Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
   // }
 
   // Marian
@@ -97,4 +98,14 @@ class MovableObject extends DrawableObject {
   //     this.y + this.offset.top <= obj.y + obj.height - obj.offset.bottom
   //   );
   // }
+
+  /**
+   * Mit offset hat man eine Feineinstellung des bereiches, wo die Objekte in Berührung kommen.
+   */
+  //   offset = {
+  //     'top': -5,
+  //     'bottom': 0,
+  //     'left': -10,
+  //     'right': -10
+  // };
 }
