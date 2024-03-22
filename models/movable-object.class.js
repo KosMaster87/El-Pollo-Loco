@@ -28,8 +28,17 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  /**
+   * The full value of an array with the images is iterated here,
+   * and a variable with the path of the images selected for playback is declared here.
+   * 
+   * Der Vollwert eines Arrays mit den Bilder wird hier Iterriert,
+   * und eine Variable mit den Pfad der Bilder die zum Abspielen gewählt wurden,
+   * wird hier geklariert.
+   * @param {Array with images} images
+   */
   playAnimation(images) {
-    let i = this.currentImage % images.length; // let i = 7 & 6; => 1, Rest 1
+    let i = this.currentImage % images.length;
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;

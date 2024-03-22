@@ -9,7 +9,7 @@ class Chicken extends MovableObject {
     "img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
     "img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
   ];
-
+  
   constructor() {
     super().loadImage("img/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
 
@@ -17,7 +17,7 @@ class Chicken extends MovableObject {
      * this. ist der Initiator für diesen Karakter. DIe loadImages() wird dann in der Eltern Klasse "movable-object.class.js weiter ausgeführt."
      */
     this.loadImages(this.IMAGES_WALKING);
-    this.x = 200 + Math.random() * 500;
+    this.x = 200 + Math.random() * 10000;
     this.speed = 0.15 + Math.random() * 0.25;
     this.animate();
   }

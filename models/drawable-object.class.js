@@ -6,11 +6,12 @@ class DrawableObject {
   currentImage = 0;
 
   /**
-   * @param {Load image for any movable caracter.} path
+   * Load image for any movable character.
+   * @param {The path of the image to be loaded} path
    */
   loadImage(path) {
-    this.img = new Image();
-    this.img.src = path;
+    this.img = new Image(); // this.img = document.getElemnetById("image") <img id="image" src="..">
+    this.img.src = path; // Hier dann die source für das Bild vom dem Pfad ableiten. Also 
   }
 
   /**
@@ -46,10 +47,9 @@ class DrawableObject {
   loadImages(array) {
     array.forEach((path) => {
       let img = new Image();
-      img.src = path; // Path erstellen (nicht der dazugehörige Key.)
+      img.src = path;
+      // console.log(img.src);
       this.imageCache[path] = img;
-      // [path] ist der Individuelle Key für jedes des Bilder.
-      // Da ich in der Iterierung mich bereits befinde, gebe ich den selbigen Path als Key ein.
     });
   }
 }
