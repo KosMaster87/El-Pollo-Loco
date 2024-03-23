@@ -13,6 +13,9 @@ class ThrowableObject extends MovableObject {
     this.trow();
   }
 
+  /**
+   * 
+   */
   trow() {
     // this.x = x;
     // this.y = y;

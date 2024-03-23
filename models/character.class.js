@@ -64,7 +64,7 @@ class Character extends MovableObject {
     this.animate();
   }
 
-  /**{#506094, 59}
+  /**
    * 
    */
   animate() {

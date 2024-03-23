@@ -19,7 +19,7 @@ class MovableObject extends DrawableObject {
     }, 1000 / 26);
   }
 
-  /**{#cca7be}
+  /**
    *
    * @returns Throwable object should always fall.
    */
@@ -50,14 +50,14 @@ class MovableObject extends DrawableObject {
     this.currentImage++;
   }
 
-  /**{#cca7be}
+  /**
    * 
    */
   moveRight() {
     this.x += this.speed;
   }
 
-  /**{#cca7be}
+  /**
    * Bewegt z.B. die Wolken und die Hühner.
    * Der this.speed wird in dem jeweiligem Objekt definiert.
    */
@@ -65,14 +65,14 @@ class MovableObject extends DrawableObject {
     this.x -= this.speed;
   }
 
-  /**{#cca7be}
+  /**
    * Nur für den Peppe, um seine beschleunigung zum Springen zu steuern.
    */
   jump() {
     this.speedY = 15;
   }
 
-  /**{#cca7be}
+  /**
    * 
    */
   isHurt() {
@@ -81,7 +81,7 @@ class MovableObject extends DrawableObject {
     return timePassed < 1;
   }
 
-  /**{#cca7be}
+  /**
    * 
    */
   hit() {
@@ -93,7 +93,7 @@ class MovableObject extends DrawableObject {
     }
   }
 
-  /**{#cca7be}
+  /**
    * 
    * @returns 
    */
@@ -101,7 +101,7 @@ class MovableObject extends DrawableObject {
     return this.energy == 0;
   }
 
-  /**{#cca7be}
+  /**
    * 
    */
   isColliding(obj) {

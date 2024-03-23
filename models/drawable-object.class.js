@@ -14,17 +14,20 @@ class DrawableObject {
     this.img.src = path; // Hier dann die source für das Bild vom dem Pfad ableiten. Also
   }
 
-  /**{#ce866a}
+  /**
    * Import from world.class.js
+   * Hier werden die zu Zeichnenden Bilder auf die Canvas gezeichnet.
+   * ACHTUNG: Es ist nicht das Selbe "draw()" wie es in der class World dedfiniert ist. 
    * @param {each movable object} ctx
    */
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    // this entfählt, da der Parameter das this.object selber ist.
   }
 
-  /**{#ce866a}
+  /**
    * Import from world.class.js
-   * InstanceOf bedeutet, dass nur die in der if Bediengung markierten Objekte die Umrandung bekommen.
+   * "InstanceOf" bedeutet, dass nur die in der if Bediengung markierten Objekte die Umrandung bekommen.
    * Und das nur für die drawable-object.class.js, da hier auch mit "this" bezeichnet ist.
    */
   drawFrame(ctx) {
@@ -41,7 +44,7 @@ class DrawableObject {
     }
   }
 
-  /**{#f3efe9}
+  /**
    * Wird bei den Charakteren und bewegten Objekten durch super() gestartet."
    * @param {Array image summary} array
    */

@@ -24,7 +24,7 @@ class World {
     this.run();
   }
 
-  /**{#cf9a4b}
+  /**
    * Für die Tastatur steuerung, den Karakter und die Welt zusammen verbinden .
    * Der Karakter kann die Variablen der Welt nun nutzen.
    * Hier wird eine Beziehung zwischen dem "Character" und der "World" Klasse hergestellt.
@@ -69,21 +69,22 @@ class World {
     }
   }
 
-  /**{#48bbc4, 27}
+  /**
    * Draw() wird immer wieder aufgerufen.
    * Draw what ever in this.World
+   * ACHTUNG: Es ist nicht das Selbe "draw()"  wie es in der class DrawableObject definiert ist.
    */
   draw() {
     // clearRect => Die Canvas Reseten.
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     this.ctx.translate(this.camera_x, 0); // Die Welt verschieben.
-    this.addObjectsToMap(this.level.background); // Den Hintergrund des Spiels zuerst einfügen.
+    this.addObjectsToMap(this.level.background);
 
-    this.ctx.translate(-this.camera_x, 0);
+    this.ctx.translate(-this.camera_x, 0); // Die Welt verschieben.
 
     this.addToMap(this.statusBar);
-    this.ctx.translate(this.camera_x, 0);
+    this.ctx.translate(this.camera_x, 0); // Die Welt verschieben.
 
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.clouds);
@@ -101,7 +102,7 @@ class World {
     });
   }
 
-  /**{#1f233b, 50}
+  /**
    * Adds any objects with specific attributes.
    * @param {The objects in this world.} objects
    */
@@ -119,11 +120,12 @@ class World {
    */
   addToMap(mo) {
     if (mo.otherDirection) {
+      // nach rechts = true; Weiter mit "flipImage".
       this.flipImage(mo);
     }
 
-    mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    mo.draw(this.ctx); // Weiter in der drawable-object.class.js.
+    mo.drawFrame(this.ctx); // Weiter in der drawable-object.class.js.
 
     // Die Bedingung muss sein um die Richtung abzubrechen.
     if (mo.otherDirection) {
@@ -132,18 +134,20 @@ class World {
   }
 
   /**
-   * Die Flips sind zum Spiegeln der Bilder.
+   * Die "Flips" sind zum Spiegeln der Bilder.
+   * Den von rechts-nach-links zustand setzen.
    * @param {movable-object} mo
    */
   flipImage(mo) {
     this.ctx.save();
-    this.ctx.translate(mo.width, 0);
-    this.ctx.scale(-1, 1);
+    this.ctx.translate(mo.width, 0); // Die Verschiebung um die eigene Y-Achse.
+    this.ctx.scale(-1, 1); // Die Spieglung mit "-1" in der X-Achse. Die Y-Achse bleibt unverändert mit "1".
     mo.x = mo.x * -1;
   }
 
   /**
-   * Die Flips sind zum Spiegeln der Bilder.
+   * Die "Flips" sind zum Spiegeln der Bilder.
+   * Den von-links-nach-rechts zustand setzen.
    * @param {movable-object} mo
    */
   flipImageBack(mo) {

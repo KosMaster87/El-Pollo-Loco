@@ -5,8 +5,9 @@ class BackgroundObject extends MovableObject {
   height = 480;
 
   /**
-   *
-   * @param {*} imagePath
+   * The background is declared here by the path and its position.
+   * Der Hindertgrund wird hier durch den Pfad und dessen Position deklariert.
+   * @param {Der Pfad im Projekt} imagePath
    */
   constructor(imagePath, x) {
     super().loadImage(imagePath);
