@@ -53,7 +53,8 @@ class Character extends MovableObject {
     super().loadImage("img/2_character_pepe/2_walk/W-21.png");
 
     /**
-     * this. ist der Initiator für diesen Karakter. Die loadImages() wird dann in der Eltern Klasse "movable-object.class.js weiter ausgeführt."
+     * Das super() startet auch diese fn.
+     * this. ist der Initiator für diesen Karakter. Die loadImages() wird dann in der Eltern Klasse "drawable-object.class.js weiter ausgeführt."
      */
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
@@ -63,6 +64,9 @@ class Character extends MovableObject {
     this.animate();
   }
 
+  /**{#506094, 59}
+   * 
+   */
   animate() {
     /**
      * Speed optionts
@@ -71,6 +75,9 @@ class Character extends MovableObject {
     setInterval(() => {
       this.walking_sound.pause();
 
+      // Weill ich aus der "world" dem "Character" den zugrif gewährt habe,
+      // kann ich nun mit "this.world" innerhalb des "Characters" arbeiten.
+      // das "level" ist im "Level" definiert.
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;

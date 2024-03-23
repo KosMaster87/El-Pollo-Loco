@@ -11,10 +11,10 @@ class DrawableObject {
    */
   loadImage(path) {
     this.img = new Image(); // this.img = document.getElemnetById("image") <img id="image" src="..">
-    this.img.src = path; // Hier dann die source für das Bild vom dem Pfad ableiten. Also 
+    this.img.src = path; // Hier dann die source für das Bild vom dem Pfad ableiten. Also
   }
 
-  /**
+  /**{#ce866a}
    * Import from world.class.js
    * @param {each movable object} ctx
    */
@@ -22,9 +22,10 @@ class DrawableObject {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
-  /**
+  /**{#ce866a}
    * Import from world.class.js
    * InstanceOf bedeutet, dass nur die in der if Bediengung markierten Objekte die Umrandung bekommen.
+   * Und das nur für die drawable-object.class.js, da hier auch mit "this" bezeichnet ist.
    */
   drawFrame(ctx) {
     if (this instanceof Character || this instanceof Chicken) {
@@ -40,16 +41,17 @@ class DrawableObject {
     }
   }
 
-  /**
+  /**{#f3efe9}
    * Wird bei den Charakteren und bewegten Objekten durch super() gestartet."
    * @param {Array image summary} array
    */
   loadImages(array) {
     array.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      // console.log(img.src);
+      let img = new Image(); // Image erstellen. Dann,
+      img.src = path; // die source zuweisen.
       this.imageCache[path] = img;
+      // Das Image mit seinem zugewiesenem source in das Array pushen.
+      // Der [path] ist der Schlüssel im Array des jeweiligen Bildes.
     });
   }
 }

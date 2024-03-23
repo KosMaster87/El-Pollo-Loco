@@ -7,6 +7,9 @@ class MovableObject extends DrawableObject {
   energy = 100;
   lastHit = 0;
 
+  /**
+   * Die Schwerkraft für den Charakter und die Flaschen definieren.
+   */
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
@@ -16,7 +19,7 @@ class MovableObject extends DrawableObject {
     }, 1000 / 26);
   }
 
-  /**
+  /**{#cca7be}
    *
    * @returns Throwable object should always fall.
    */
@@ -31,10 +34,13 @@ class MovableObject extends DrawableObject {
   /**
    * The full value of an array with the images is iterated here,
    * and a variable with the path of the images selected for playback is declared here.
-   * 
+   *
    * Der Vollwert eines Arrays mit den Bilder wird hier Iterriert,
    * und eine Variable mit den Pfad der Bilder die zum Abspielen gewählt wurden,
    * wird hier geklariert.
+   * 
+   * Das heisst, die im vorab geladenen "loadImages(array)",
+   * werden hier einzelt für die Bewegung zwischengespeichert.
    * @param {Array with images} images
    */
   playAnimation(images) {
@@ -44,27 +50,40 @@ class MovableObject extends DrawableObject {
     this.currentImage++;
   }
 
-  /**
-   * Bewegt die Wolken und die Hühner
+  /**{#cca7be}
+   * 
    */
   moveRight() {
     this.x += this.speed;
   }
 
+  /**{#cca7be}
+   * Bewegt z.B. die Wolken und die Hühner.
+   * Der this.speed wird in dem jeweiligem Objekt definiert.
+   */
   moveLeft() {
     this.x -= this.speed;
   }
 
+  /**{#cca7be}
+   * Nur für den Peppe, um seine beschleunigung zum Springen zu steuern.
+   */
   jump() {
     this.speedY = 15;
   }
 
+  /**{#cca7be}
+   * 
+   */
   isHurt() {
     let timePassed = new Date().getTime() - this.lastHit;
     timePassed = timePassed / 1000;
     return timePassed < 1;
   }
 
+  /**{#cca7be}
+   * 
+   */
   hit() {
     this.energy -= 10;
     if (this.energy < 0) {
@@ -74,10 +93,17 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  /**{#cca7be}
+   * 
+   * @returns 
+   */
   isDead() {
     return this.energy == 0;
   }
 
+  /**{#cca7be}
+   * 
+   */
   isColliding(obj) {
     return (
       this.x + this.width > obj.x &&

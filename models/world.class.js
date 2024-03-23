@@ -24,16 +24,18 @@ class World {
     this.run();
   }
 
-  /**
-   * Den Karakter und die Welt zusammen verbinden für die Tastatur steuerung.
+  /**{#cf9a4b}
+   * Für die Tastatur steuerung, den Karakter und die Welt zusammen verbinden .
    * Der Karakter kann die Variablen der Welt nun nutzen.
+   * Hier wird eine Beziehung zwischen dem "Character" und der "World" Klasse hergestellt.
+   * Die Variable "world" muss dem "charavter.class.js" hinzugefügt werden.
    */
   setWorld() {
     this.character.world = this;
   }
 
   /**
-   *
+   * !!!!!!!!!!!!!!!!!!!!!
    */
   run() {
     setInterval(() => {
@@ -67,19 +69,19 @@ class World {
     }
   }
 
-  /**
+  /**{#48bbc4, 27}
    * Draw() wird immer wieder aufgerufen.
    * Draw what ever in this.World
    */
   draw() {
+    // clearRect => Die Canvas Reseten.
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    // world.character.x = 300 => Zum testen ob clear Funktionier.
 
     this.ctx.translate(this.camera_x, 0); // Die Welt verschieben.
-    this.addObjectsToMap(this.level.background);
+    this.addObjectsToMap(this.level.background); // Den Hintergrund des Spiels zuerst einfügen.
 
     this.ctx.translate(-this.camera_x, 0);
-    // --Space for fixed objects --
+
     this.addToMap(this.statusBar);
     this.ctx.translate(this.camera_x, 0);
 
@@ -91,7 +93,6 @@ class World {
     this.ctx.translate(-this.camera_x, 0); // Die Welt verschieben.
 
     self = this;
-
     /**
      * this.draw() fps aktion.
      */
@@ -100,7 +101,7 @@ class World {
     });
   }
 
-  /**
+  /**{#1f233b, 50}
    * Adds any objects with specific attributes.
    * @param {The objects in this world.} objects
    */
@@ -111,7 +112,8 @@ class World {
   }
 
   /**
-   * Die if Abfragen handhaben den Charakter, seinen Spiegelbild. Sowie die Gespiegelte Koardinaten des Canvas für den Charakter.
+   * Die if Abfragen handhaben den Charakter, seinen Spiegelbild.
+   * Sowie die Gespiegelte Koardinaten des Canvas für den Charakter.
    * Add to Canvas Board each things.
    * @param {movable object} mo
    */
@@ -120,19 +122,17 @@ class World {
       this.flipImage(mo);
     }
 
-    /**
-     * TODO *******  export to movable-object.class.js
-     */
     mo.draw(this.ctx);
     mo.drawFrame(this.ctx);
 
+    // Die Bedingung muss sein um die Richtung abzubrechen.
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
   }
 
   /**
-   * TODO *******  export to movable-object.class.js
+   * Die Flips sind zum Spiegeln der Bilder.
    * @param {movable-object} mo
    */
   flipImage(mo) {
@@ -143,6 +143,7 @@ class World {
   }
 
   /**
+   * Die Flips sind zum Spiegeln der Bilder.
    * @param {movable-object} mo
    */
   flipImageBack(mo) {
