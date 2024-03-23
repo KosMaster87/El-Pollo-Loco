@@ -142,7 +142,7 @@ class World {
     this.ctx.save();
     this.ctx.translate(mo.width, 0); // Die Verschiebung um die eigene Y-Achse.
     this.ctx.scale(-1, 1); // Die Spieglung mit "-1" in der X-Achse. Die Y-Achse bleibt unverändert mit "1".
-    mo.x = mo.x * -1;
+    mo.x = mo.x * -1; // Das Koardinatensystem zu dem Bild muss auch noch gespiegelt werden.
   }
 
   /**
@@ -151,7 +151,7 @@ class World {
    * @param {movable-object} mo
    */
   flipImageBack(mo) {
-    mo.x = mo.x * -1;
+    mo.x = mo.x * -1; // Das Koardinatensystem zu dem Bild muss auch noch gespiegelt werden.
     this.ctx.restore();
   }
 }
