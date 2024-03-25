@@ -3,7 +3,8 @@
 class Character extends MovableObject {
   height = 150;
   width = 85;
-  x = 80;
+  x = 0;
+  // x = 80;
   y = 150;
   speed = 5;
   world; // Der Karakter kann nun auf die Variablen aus der Welt zugreifen.
@@ -78,13 +79,14 @@ class Character extends MovableObject {
       // Weill ich aus der "world" dem "Character" den zugrif gewährt habe,
       // kann ich nun mit "this.world" innerhalb des "Characters" arbeiten.
       // das "level" ist im "Level" definiert.
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      // ..end_x damit Pepe nach rechts nicht die Leinwand verlassen kann.
+      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) { 
         this.moveRight();
         this.otherDirection = false;
         this.walking_sound.play();
       }
 
-      if (this.world.keyboard.LEFT && this.x > -500) {
+      if (this.world.keyboard.LEFT && this.x > -500) { // -500 Weill Pepe nicht aus der Leinwand, nach links, laufen soll.
         this.moveLeft();
         this.otherDirection = true;
         this.walking_sound.play();
@@ -94,7 +96,7 @@ class Character extends MovableObject {
         this.jump();
       }
 
-      this.world.camera_x = -this.x + 100;
+      this.world.camera_x = -this.x + 100; // Die Kamera an den Karackter gebunden, sodass die "world" sich mitbewegt. Pepe startet auch bei 100px weiter rechts.
     }, 1000 / 60);
 
     setInterval(() => {

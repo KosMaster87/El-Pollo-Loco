@@ -78,20 +78,20 @@ class World {
     // clearRect => Die Canvas Reseten.
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.translate(this.camera_x, 0); // Die Welt verschieben.
+    this.ctx.translate(this.camera_x, 0); // Die Welt verschieben. Der zweite Argument ist die Y-Achse, die nicht verschoben werden soll.
     this.addObjectsToMap(this.level.background);
 
-    this.ctx.translate(-this.camera_x, 0); // Die Welt verschieben.
+    this.ctx.translate(-this.camera_x, 0);
 
     this.addToMap(this.statusBar);
-    this.ctx.translate(this.camera_x, 0); // Die Welt verschieben.
+    this.ctx.translate(this.camera_x, 0);
 
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.throwableObjects);
 
-    this.ctx.translate(-this.camera_x, 0); // Die Welt verschieben.
+    this.ctx.translate(-this.camera_x, 0);
 
     self = this;
     /**
