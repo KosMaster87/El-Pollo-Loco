@@ -125,7 +125,7 @@ class World {
     }
 
     mo.draw(this.ctx); // Weiter in der drawable-object.class.js.
-    mo.drawFrame(this.ctx); // Weiter in der drawable-object.class.js.
+    mo.drawFrame(this.ctx); // Weiter in der drawable-object.class.js. // Die auserlesenen Objekte eine Umrandung.
 
     // Die Bedingung muss sein um die Richtung abzubrechen.
     if (mo.otherDirection) {

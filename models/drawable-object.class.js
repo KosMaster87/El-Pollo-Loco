@@ -17,7 +17,6 @@ class DrawableObject {
   /**
    * Import from world.class.js
    * Hier werden die zu Zeichnenden Bilder auf die Canvas gezeichnet.
-   * ACHTUNG: Es ist nicht das Selbe "draw()" wie es in der class World dedfiniert ist. 
    * @param {each movable object} ctx
    */
   draw(ctx) {

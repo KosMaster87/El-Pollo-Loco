@@ -2,8 +2,8 @@
 
 class MovableObject extends DrawableObject {
   otherDirection = false;
-  speedY = 0;
-  acceleration = 1;
+  speedY = 0; // Geschwindigkeit nach unten.
+  acceleration = 1; // Beschleunigung
   energy = 100;
   lastHit = 0;
 
@@ -12,7 +12,7 @@ class MovableObject extends DrawableObject {
    */
   applyGravity() {
     setInterval(() => {
-      if (this.isAboveGround() || this.speedY > 0) {
+      if (this.isAboveGround() || this.speedY > 0) { // Das mit größer als 0 muss sein, da die Sprung fn nur über dem Boden fn.
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
