@@ -35,7 +35,8 @@ class World {
   }
 
   /**
-   * !!!!!!!!!!!!!!!!!!!!!
+   * Prüft die Zeitvorgabe für Kolusion von Pepe mit den Feinden.
+   * Sowie auch die Berührung der Flaschen.
    */
   run() {
     setInterval(() => {

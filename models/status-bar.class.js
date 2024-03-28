@@ -22,12 +22,20 @@ class StatusBar extends DrawableObject {
     this.setPercentage(100);
   }
 
+  /**
+   * Bestimmung der Enerie in der Statusleiste.
+   * @param {current energy from Pepe} percentage 
+   */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.IMAGES_BAR_HEALTH[this.resolveImagaeIndex()];
     this.img = this.imageCache[path];
   }
 
+  /**
+   * Einstufung der Energieleiste.
+   * @returns number
+   */
   resolveImagaeIndex() {
     if (this.percentage == 100) {
       return 5;

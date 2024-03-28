@@ -12,7 +12,8 @@ class MovableObject extends DrawableObject {
    */
   applyGravity() {
     setInterval(() => {
-      if (this.isAboveGround() || this.speedY > 0) { // Das mit größer als 0 muss sein, da die Sprung fn nur über dem Boden fn.
+      if (this.isAboveGround() || this.speedY > 0) {
+        // Das mit größer als 0 muss sein, da die Sprung fn nur über dem Boden fn.
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
@@ -38,7 +39,7 @@ class MovableObject extends DrawableObject {
    * Der Vollwert eines Arrays mit den Bilder wird hier Iterriert,
    * und eine Variable mit den Pfad der Bilder die zum Abspielen gewählt wurden,
    * wird hier geklariert.
-   * 
+   *
    * Das heisst, die im vorab geladenen "loadImages(array)",
    * werden hier einzelt für die Bewegung zwischengespeichert.
    * @param {Array with images} images
@@ -51,7 +52,7 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * 
+   *
    */
   moveRight() {
     this.x += this.speed;
@@ -73,7 +74,8 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * 
+   * Der zugefügte Schaden, an Pepe in einer bestimmten Zeitspanne. (Siehe: this.lastHit)
+   * @returns Boolean
    */
   isHurt() {
     let timePassed = new Date().getTime() - this.lastHit;
@@ -82,7 +84,7 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * 
+   * Zugefügter Schaden am Charakter in der Statusleiste.
    */
   hit() {
     this.energy -= 10;
@@ -94,15 +96,15 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * 
-   * @returns 
+   * Pepes sein sterben.
+   * @returns
    */
   isDead() {
     return this.energy == 0;
   }
 
   /**
-   * 
+   * Berechnung des Bereiches für das jeweiliege Objekt.
    */
   isColliding(obj) {
     return (

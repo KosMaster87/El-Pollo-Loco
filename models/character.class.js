@@ -66,39 +66,51 @@ class Character extends MovableObject {
   }
 
   /**
-   * 
+   * Pepes Eigenschaften als Objekt.
    */
   animate() {
     /**
-     * Speed optionts
-     * Running direction
+     * Speed optionts and Running direction.
+     * Die Eingaben des Benutzers, Um Pepe zu Bewegenm.
      */
     setInterval(() => {
       this.walking_sound.pause();
-
-      // Weill ich aus der "world" dem "Character" den zugrif gewährt habe,
-      // kann ich nun mit "this.world" innerhalb des "Characters" arbeiten.
-      // das "level" ist im "Level" definiert.
-      // ..end_x damit Pepe nach rechts nicht die Leinwand verlassen kann.
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) { 
-        this.moveRight();
-        this.otherDirection = false;
-        this.walking_sound.play();
-      }
-
-      if (this.world.keyboard.LEFT && this.x > -500) { // -500 Weill Pepe nicht aus der Leinwand, nach links, laufen soll.
-        this.moveLeft();
-        this.otherDirection = true;
-        this.walking_sound.play();
-      }
-
-      if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-        this.jump();
-      }
-
+      this.EnterKeyboard();
       this.world.camera_x = -this.x + 100; // Die Kamera an den Karackter gebunden, sodass die "world" sich mitbewegt. Pepe startet auch bei 100px weiter rechts.
     }, 1000 / 60);
+    this.besidesFunctions();
+  }
 
+  /**
+   * Steuerung von Pepe durch die Eingabetasten.
+   */
+  EnterKeyboard() {
+    // Weill ich aus der "world" dem "Character" den zugrif gewährt habe,
+    // kann ich nun mit "this.world" innerhalb des "Characters" arbeiten.
+    // das "level" ist im "Level" definiert.
+    // ..end_x damit Pepe nach rechts nicht die Leinwand verlassen kann.
+    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      this.moveRight();
+      this.otherDirection = false;
+      this.walking_sound.play();
+    }
+
+    if (this.world.keyboard.LEFT && this.x > -500) {
+      // -500 Weill Pepe nicht aus der Leinwand, nach links, laufen soll.
+      this.moveLeft();
+      this.otherDirection = true;
+      this.walking_sound.play();
+    }
+
+    if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+      this.jump();
+    }
+  }
+
+  /**
+   * Some Auto playback images.
+   */
+  besidesFunctions() {
     setInterval(() => {
       if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
