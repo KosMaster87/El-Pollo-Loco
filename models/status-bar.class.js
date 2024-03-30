@@ -23,8 +23,9 @@ class StatusBar extends DrawableObject {
   }
 
   /**
+   * Wird in der world.class.js Definiert; In der "checkCollisions()", bezogen auf "energy" durch "hit()", in movable-object.class.js.
    * Bestimmung der Enerie in der Statusleiste.
-   * @param {current energy from Pepe} percentage 
+   * @param {current energy from Pepe} percentage
    */
   setPercentage(percentage) {
     this.percentage = percentage;

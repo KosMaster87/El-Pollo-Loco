@@ -10,13 +10,13 @@ class ThrowableObject extends MovableObject {
     super().loadImage("img/6_salsa_bottle/salsa_bottle.png");
     this.x = 0;
     this.y = 0;
-    this.trow();
+    this.throw();
   }
 
   /**
    * 
    */
-  trow() {
+  throw() {
     // this.x = x;
     // this.y = y;
     this.speedY = 30;

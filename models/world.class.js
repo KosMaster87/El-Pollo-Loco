@@ -41,7 +41,7 @@ class World {
   run() {
     setInterval(() => {
       this.checkCollisions();
-      this.checkTrowObject();
+      this.checkThrowObject();
     }, 200);
   }
 
@@ -60,7 +60,7 @@ class World {
   /**
    * Flasche Werfen
    */
-  checkTrowObject() {
+  checkThrowObject() {
     if (this.keyboard.D) {
       let bottle = new ThrowableObject(
         this.character.x + 100,
@@ -79,25 +79,32 @@ class World {
     // clearRect => Die Canvas Reseten.
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+    /**
+     * Den Hintergrung zu den Bewegbaren Objekten in der X-Achse anpassen.
+     */
     this.ctx.translate(this.camera_x, 0); // Die Welt verschieben. Der zweite Argument ist die Y-Achse, die nicht verschoben werden soll.
     this.addObjectsToMap(this.level.background);
 
+    /**
+     * Funktionen für nicht gebewegbare Zeichenbare Objekte.
+     */
     this.ctx.translate(-this.camera_x, 0);
-
     this.addToMap(this.statusBar);
     this.ctx.translate(this.camera_x, 0);
 
+    /**
+     * Funktionen für bewegbare Zeichenbare Objekte.
+     */
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.throwableObjects);
-
     this.ctx.translate(-this.camera_x, 0);
 
-    self = this;
     /**
      * this.draw() fps aktion.
-     */
+    */
+    self = this;
     requestAnimationFrame(function () {
       self.draw();
     });
