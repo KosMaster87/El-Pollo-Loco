@@ -6,7 +6,7 @@ class Keyboard {
   UP = false;
   DOWN = false;
   SPACE = false;
-  THROW = false;
+  THROW = false; // Taste D
   COMMAND = false;
   AUDIO = false;
   RESTART = false;

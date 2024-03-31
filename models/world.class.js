@@ -4,8 +4,8 @@ class World {
   level = level1;
   statusBar = new StatusBar();
   character = new Character();
-  throwableObjects = [];
-  // throwableObjects = [new ThrowableObject()];
+  // throwableObjects = [];
+  throwableObjects = [new ThrowableObject()];
   canvas;
   ctx;
   keyboard;
